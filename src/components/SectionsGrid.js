@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     fontSize: '4.5vw',
     fontWeight: 'bold',
+    textShadow: '1px 1px black',
     [theme.breakpoints.up('sm')]: {
       maxWidth: '90%',
       fontSize: '4vw',
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   body: {
     position: 'relative',
     fontSize: '3.5vw',
+    textShadow: '1px 1px black',
     [theme.breakpoints.up('sm')]: {
       maxWidth: '90%',
       fontSize: '2.7vw',
@@ -61,47 +63,42 @@ const sections = [
     name: 'Front End',
     top: 0,
     left: 0,
-    imageUrl: 'https://reactjs.org/logo-og.png',
+    imageUrl: 'https://i.imgur.com/J1Oioug.png',
     hoverColor: '#1de8b5',
   },
   {
     name: 'Full Stack',
     top: 0,
     left: 33.3333333,
-    imageUrl:
-      'https://eant.tech/data_cursos_carreras/carreras/2_desarrollador_web_full_stack/carrera-programador-web-full-stack.jpg',
+    imageUrl: 'https://i.imgur.com/bOoEINR.jpg',
     hoverColor: '#7986cb',
   },
   {
     name: 'Education',
     top: 0,
     left: 66.6666666,
-    imageUrl:
-      'https://krmangalam.com/wp-content/uploads/2018/09/education-background-18.jpg',
+    imageUrl: 'https://i.imgur.com/RyXLFAo.png',
     hoverColor: '#ffca28',
   },
   {
     name: 'Experience',
     top: 50,
     left: 0,
-    imageUrl:
-      'https://www.callcentrehelper.com/images/stories/2018/12/white-head-outline-760.jpg',
+    imageUrl: 'https://i.imgur.com/LZ8QLyD.jpg',
     hoverColor: '#ef5350',
   },
   {
     name: 'Languages',
     top: 50,
     left: 33.3333333,
-    imageUrl:
-      'https://d1sjtleuqoc1be.cloudfront.net/wp-content/uploads/2015/06/language-learning.jpg',
+    imageUrl: 'https://i.imgur.com/IqnFtrg.jpg',
     hoverColor: '#42a5f5',
   },
   {
     name: 'Other Technologies',
     top: 50,
     left: 66.6666666,
-    imageUrl:
-      'https://img.freepik.com/vector-gratis/fondo-tecnologia-abstracta-ciencia-tecnologia-conexion_42705-96.jpg?size=626&ext=jpg&ga=GA1.2.408482729.1603497600',
+    imageUrl: 'https://i.imgur.com/akDtEfZ.png',
     hoverColor: '#ff8a80',
   },
 ];
@@ -210,11 +207,15 @@ const SectionsGrid = () => {
     if (!isOpen) {
       setSelectedSection(section);
       setIsOpening(true);
-      setIsOpen(true);
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 500);
     } else {
       setSelectedSection('none');
       setIsOpening(false);
-      setIsOpen(false);
+      setTimeout(() => {
+        setIsOpen(false);
+      }, 500);
     }
   };
 
@@ -230,9 +231,11 @@ const SectionsGrid = () => {
           hoverColor={section.hoverColor}
         >
           {!isOpen ? (
-            <Typography className={classes.title} variant="h2">
-              {section.name}
-            </Typography>
+            isOpening ? null : (
+              <Typography className={classes.title} variant="h2">
+                {section.name}
+              </Typography>
+            )
           ) : selectedSection === section.name ? (
             <div className={classes.expanded}>
               <img

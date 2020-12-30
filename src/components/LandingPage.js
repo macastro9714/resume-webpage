@@ -15,11 +15,21 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
   },
   demosText: {
-    maxWidth: '70%',
+    maxWidth: '90%',
+    textAlign: 'justify',
     margin: '4rem 0rem',
     fontSize: '4vw',
     [theme.breakpoints.up('sm')]: {
+      maxWidth: '90%',
+      fontSize: '3vw',
+    },
+    [theme.breakpoints.up('md')]: {
+      maxWidth: '80%',
       fontSize: '2vw',
+    },
+    [theme.breakpoints.up('lg')]: {
+      maxWidth: '70%',
+      fontSize: '1.5vw',
     },
   },
 }));
@@ -44,9 +54,16 @@ const LandingPage = () => {
           item
           xs={12}
         >
-          <Typography className={classes.demosText} variant="h5">
+          <Typography
+            id="textInfoDemoPages"
+            className={classes.demosText}
+            variant="h5"
+          >
             In the following section you can find three projects based on React.
-            By hovering over each option you can find more information.
+            These are websites with different themes: films, news and podcasts,
+            respectively. By hovering over each option you can find more
+            information. Also, all pages (including this one) are totally
+            responsive.
           </Typography>
         </Grid>
         <Grid item xs={12}>

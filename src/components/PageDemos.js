@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     fontSize: '5vw',
     fontWeight: 'bold',
+    zIndex: '-1',
+    textShadow: '1px 1px black',
     [theme.breakpoints.up('sm')]: {
       fontSize: '3vw',
     },
@@ -38,15 +40,18 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     fontSize: '3vw',
     textAlign: 'justify',
+    maxWidth: '95%',
+    zIndex: '-1',
+    textShadow: '1px 1px black',
     [theme.breakpoints.up('sm')]: {
       maxWidth: '90%',
-      fontSize: '2vw',
+      fontSize: '2.5vw',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '1.5vw',
+      fontSize: '2.2vw',
     },
     [theme.breakpoints.up('lg')]: {
-      fontSize: '1vw',
+      fontSize: '2vw',
     },
   },
 }));
@@ -71,17 +76,22 @@ const Item = styled.div`
   color: white;
   text-align: center;
   z-index: ${(props) => props.zindex};
-  &:hover {
-    position: absolute;
-    z-index: 5;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    transition: 0.5s;
-    transform: skewY(0deg);
-    cursor: pointer;
-  }
+  ${(props) =>
+    props.hover &&
+    css`
+      &:hover {
+        position: absolute;
+        z-index: 5;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        transition: 0.5s;
+        transform: skewY(0deg);
+        cursor: pointer;
+      }
+    `}
+
   transition: 0.5s;
 `;
 
@@ -106,17 +116,20 @@ const items = [
       opt2: {
         display: 'flex',
         height: '100%',
+        width: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        flexDirection: 'column',
       },
     },
     title: 'Movies Demo',
-    info: 'Movies Demo Info',
+    info: `In this project we use the API of themoviedb. On this page you will find a list of movies, each movie has information and you can click on it to see even more about it. The main features of this page are the movie grid, the info animations, the info modal, the pagination, the movie search, the genre filter and the menu.`,
     url: 'https://movieinfodemo.macastro9714.vercel.app/',
+    imageUrl: 'https://i.imgur.com/6kFDoia.png',
   },
   {
     top: 0,
-    left: 10,
+    left: 0,
     height: 79,
     width: 100,
     degree: 0,
@@ -135,13 +148,17 @@ const items = [
       opt2: {
         display: 'flex',
         height: '100%',
+        width: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        flexDirection: 'column',
       },
     },
     title: 'News Demo',
-    info: 'News Demo Info',
+    info:
+      'In this project we use the GNews API. In this page we find a series of news, each news redirects to its page of origin. The main features of this page are the news layout, the news carousel, the dark/normal mode, the search and advanced news search, the filter by type, the filter by country, and the menu.',
     url: 'https://newsdemo.macastro9714.vercel.app/',
+    imageUrl: 'https://i.imgur.com/8QRCzrj.png',
   },
   {
     top: 0,
@@ -163,13 +180,17 @@ const items = [
       opt2: {
         display: 'flex',
         height: '100%',
+        width: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        flexDirection: 'column',
       },
     },
     title: 'Podcast Demo',
-    info: 'Podcast Demo Info',
+    info:
+      'In this project we use the listennotes API. On this page you will find a variety of podcasts, each with its own series of episodes that can be played. The main features of this page are the podcast grid, the episode list by podcast, the audio player, the infinite scroll, the podcast and episode search, and the genre filter.',
     url: 'https://podcastdemo.macastro9714.vercel.app/',
+    imageUrl: 'https://i.imgur.com/46VYEQI.png',
   },
 ];
 
@@ -192,12 +213,16 @@ const itemsSmall = [
       opt2: {
         display: 'flex',
         height: '100%',
+        width: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        flexDirection: 'column',
       },
     },
     title: 'Movies Demo',
-    info: 'Movies Demo Info',
+    info: `In this project we use the API of themoviedb. On this page you will find a list of movies, each movie has information and you can click on it to see even more about it. The main features of this page are the movie grid, the info animations, the info modal, the pagination, the movie search, the genre filter and the menu.`,
+    url: 'https://movieinfodemo.macastro9714.vercel.app/',
+    imageUrl: 'https://i.imgur.com/6kFDoia.png',
   },
   {
     top: 33.3333,
@@ -217,12 +242,17 @@ const itemsSmall = [
       opt2: {
         display: 'flex',
         height: '100%',
+        width: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        flexDirection: 'column',
       },
     },
     title: 'News Demo',
-    info: 'News Demo Info',
+    info:
+      'In this project we use the GNews API. In this page we find a series of news, each news redirects to its page of origin. The main features of this page are the news layout, the news carousel, the dark/normal mode, the search and advanced news search, the filter by type, the filter by country, and the menu.',
+    url: 'https://newsdemo.macastro9714.vercel.app/',
+    imageUrl: 'https://i.imgur.com/8QRCzrj.png',
   },
   {
     top: 66.6666,
@@ -242,18 +272,39 @@ const itemsSmall = [
       opt2: {
         display: 'flex',
         height: '100%',
+        width: '100%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
+        flexDirection: 'column',
       },
     },
     title: 'Podcast Demo',
-    info: 'Podcast Demo Info',
+    info:
+      'In this project we use the listennotes API. On this page you will find a variety of podcasts, each with its own series of episodes that can be played. The main features of this page are the podcast grid, the episode list by podcast, the audio player, the infinite scroll, the podcast and episode search, and the genre filter.',
+    url: 'https://podcastdemo.macastro9714.vercel.app/',
+    imageUrl: 'https://i.imgur.com/46VYEQI.png',
   },
 ];
 
 const PageDemos = () => {
   const classes = useStyles();
   const [isHover, setIsHover] = useState(false);
+  const [indicator, setIndicator] = useState('none'); //none, Movies Demo, News Demo, Podcast Demo
+
+  const focusAway = (url) => {
+    setIsHover(false);
+    window.open(url);
+  };
+
+  const mouseIn = (title) => {
+    if (window.innerWidth > 865) setIsHover(true);
+    setIndicator(title);
+  };
+
+  const mouseOff = () => {
+    if (window.innerWidth > 865) setIsHover(false);
+    setIndicator('none');
+  };
 
   const renderItems = () => {
     const selectedArray = window.innerWidth <= 865 ? itemsSmall : items;
@@ -270,6 +321,7 @@ const PageDemos = () => {
         title,
         info,
         url,
+        imageUrl,
       }) => {
         return (
           <Item
@@ -281,9 +333,14 @@ const PageDemos = () => {
             degree={degree}
             zindex={zindex}
             background={background}
-            onMouseOver={() => setIsHover(true)}
-            onMouseOut={() => setIsHover(false)}
-            onClick={() => window.open(url)}
+            onMouseOver={() => mouseIn(title)}
+            onMouseOut={() => mouseOff()}
+            onClick={() => {
+              window.innerWidth <= 865
+                ? setIsHover(!isHover)
+                : window.open(url);
+            }}
+            hover={isHover}
           >
             {!isHover ? (
               <div style={styleItem.opt1}>
@@ -291,8 +348,26 @@ const PageDemos = () => {
                   {title}
                 </Typography>
               </div>
-            ) : (
-              <div style={styleItem.opt2}>
+            ) : indicator === title ? (
+              <div
+                style={styleItem.opt2}
+                onClick={() =>
+                  window.innerWidth <= 865 ? focusAway(url) : null
+                }
+                onMouseOut={() => setIsHover(false)}
+              >
+                <img
+                  alt={title}
+                  style={{
+                    height: '100%',
+                    width: '100%',
+                    position: 'absolute',
+                    objectFit: 'cover',
+                    opacity: '0.5',
+                    zIndex: '-1',
+                  }}
+                  src={imageUrl}
+                />
                 <Typography className={classes.title} variant="h2">
                   {title}
                 </Typography>
@@ -300,7 +375,7 @@ const PageDemos = () => {
                   {info}
                 </Typography>
               </div>
-            )}
+            ) : null}
           </Item>
         );
       }

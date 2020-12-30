@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '2rem 0rem',
+    margin: '4rem 0rem',
   },
   cardContainer: {
     backgroundColor: theme.palette.primary.white,
@@ -161,7 +161,7 @@ const PresentationCard = () => {
           <div className={classes.profileImageContainer}>
             <CardMedia
               className={classes.profileImage}
-              image="https://lh6.googleusercontent.com/i99mwXQHvFrEHOt-LCp1wQBTasK2_DeIOvl6c_o8HD6k3RYM4EPMm-2Q9OLng7ephaPhPPRx14ok7He2Y7dN=w1919-h1006"
+              image="https://i.imgur.com/FR4BCMf.jpg"
             />
             <Typography className={classes.imgDescription} variant="subtitle1">
               Systems Engineer | Software Developer
@@ -170,7 +170,7 @@ const PresentationCard = () => {
           <CardContent style={{ padding: 0 }} className={classes.profileCV}>
             <Button
               target="_blank"
-              href="https://drive.google.com/file/d/121dq6juF_Cz-J7gcSbFbTQBTOVYb9YsF/view?usp=sharing"
+              href="https://drive.google.com/file/d/1h_cD1jnRpoDSjngPXvKh_lYzzUBZvphW/view?usp=sharing"
               className={classes.profileCVButton}
             >
               Download Resume
