@@ -4,31 +4,37 @@ import { Paper, Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: 'none',
-    justifyContent: 'center',
-    height: '15vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    height: '100%',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      height: '15vh',
     },
   },
   item: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '33.3333%',
+    width: '100%',
     backgroundColor: theme.palette.primary.contrastText,
     color: 'white',
     borderRadius: 0,
     fontFamily: 'Roboto',
-    fontSize: '2vw',
+    fontSize: '2.5vw',
     textAlign: 'center',
-    padding: '0vw 5vw',
+
     [theme.breakpoints.up('sm')]: {
       maxWidth: '90%',
+      padding: 0,
       fontSize: '1.5vw',
     },
     [theme.breakpoints.up('md')]: {
+      padding: '0vw 5vw',
       fontSize: '1.0vw',
     },
     [theme.breakpoints.up('lg')]: {
